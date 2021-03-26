@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>hexapod_robot</name>
+  <version>0.0.0</version>
+  <description>The hexapod_robot package</description>
+  <maintainer email="davidgitz@gmail.com">David Gitz</maintainer>
+  <license>MIT</license>
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>eros</depend>
+  <depend>ros_hats</depend>
+  <depend>ros_display_hats</depend>
+  <export>
+  </export>
+</package>

@@ -1,0 +1,220 @@
+ {
+ 	"DeviceList": {
+ 		"DevComputer1": {
+ 			"Parent": "",
+ 			"Type": "ComputeModule",
+ 			"Architecture": "x86_64",
+ 			"Capability": "ROS",
+ 			"CatkinWS": "/home/robot/catkin_ws",
+ 			"Jobs": -1
+ 		},
+ 		"BuildServer1": {
+ 			"Parent": "",
+ 			"Type": "BuildServer",
+ 			"Architecture": "armv7l",
+ 			"Capability": "ROS",
+ 			"CatkinWS": "/home/robot/catkin_ws",
+ 			"Jobs": 1
+ 		},
+        "DevModule1": {
+ 			"Parent": "",
+ 			"Type": "BuildServer",
+ 			"Architecture": "armv7l",
+ 			"Capability": "ROS",
+ 			"CatkinWS": "/home/robot/catkin_ws",
+ 			"Jobs": 1
+ 		},
+ 		"ControlModule1": {
+ 			"Parent": "",
+ 			"Type": "ControlModule",
+ 			"Architecture": "armv7l",
+ 			"Capability": "ROS",
+ 			"CatkinWS": "/home/robot/catkin_ws",
+ 			"Jobs": 1
+ 		},
+ 		"ControlModule2": {
+ 			"Parent": "",
+ 			"Type": "ControlModule",
+ 			"Architecture": "armv7l",
+ 			"Capability": "ROS",
+ 			"CatkinWS": "/home/robot/catkin_ws",
+ 			"Jobs": 1
+ 		},
+ 		"GPUModule1": {
+ 			"Parent": "",
+ 			"Type": "GPUModule",
+ 			"Architecture": "aarch64",
+ 			"Capability": "ROS",
+ 			"CatkinWS": "/home/robot/catkin_ws",
+ 			"Jobs": 2
+ 		},
+ 		"RelayHat1": {
+ 			"Parent": "BuildServer1",
+ 			"Type": "RelayHat",
+ 			"Model": "RPi Relay Hat",
+ 			"Capability": "GPIO",
+            "UseDefaultConfig": true,
+ 			"Ports": [
+                {
+ 				"Name": "Port0",
+                "Type":"DIGITAL",
+                "Direction":"OUTPUT",
+ 				"Channels": [
+                    {
+ 						"ChannelName": "26",
+ 						"Type": "DIGITAL",
+ 						"Direction": "OUTPUT",
+ 						"PinNumber": 0,
+ 						"DefaultValue": 0,
+ 						"MinValue": 0,
+ 						"MaxValue": 1
+ 					},
+ 					{
+ 						"ChannelName": "20",
+ 						"Type": "DIGITAL",
+ 						"Direction": "OUTPUT",
+ 						"PinNumber": 1,
+ 						"DefaultValue": 0,
+ 						"MinValue": 0,
+ 						"MaxValue": 1
+ 					},
+ 					{
+ 						"ChannelName": "21",
+ 						"Type": "DIGITAL",
+ 						"Direction": "OUTPUT",
+ 						"PinNumber": 2,
+ 						"DefaultValue": 0,
+ 						"MinValue": 0,
+ 						"MaxValue": 1
+ 					}
+ 				]
+ 			}]
+ 		},
+ 		"ServoHat1": {
+ 			"Parent": "ControlModule2",
+ 			"Type": "ServoHat",
+ 			"Model": "Adafruit 16Ch Servo Hat",
+ 			"Capability": "GPIO",
+ 			"UseDefaultConfig": false,
+ 			"Ports": [
+                {
+ 				"Name": "Port0",
+                "Type":"SERVO",
+                "Direction":"OUTPUT",
+ 				"Channels": [
+                    {
+ 						"ChannelName": "Steer",
+ 						"Type": "SERVO",
+ 						"Direction": "OUTPUT",
+ 						"PinNumber": 0,
+ 						"DefaultValue": 1500,
+ 						"MinValue": 1000,
+ 						"MaxValue": 2000
+ 					},
+ 					{
+ 						"ChannelName": "Drive",
+ 						"Type": "SERVO",
+ 						"Direction": "OUTPUT",
+ 						"PinNumber": 1,
+ 						"DefaultValue": 1500,
+ 						"MinValue": 1000,
+ 						"MaxValue": 1200
+ 					}
+ 				]
+ 			}, 
+            {
+ 				"Name": "Port1",
+                "Type":"SERVO",
+                "Direction":"OUTPUT",
+ 				"Channels": [{
+ 					"ChannelName": "LightBrightness",
+ 					"Type": "SERVO",
+ 					"Direction": "OUTPUT",
+ 					"PinNumber": 2,
+ 					"DefaultValue": 1000,
+ 					"MinValue": 1000,
+ 					"MaxValue": 2000
+ 				}]
+ 			}]
+ 		},
+ 		"ArduinoHat1": {
+ 			"Parent": "ControlModule1",
+ 			"Type": "ArduinoHat",
+ 			"Model": "AStar",
+ 			"Capability": "GPIO"
+ 		},
+        "GPSHat1": {
+ 			"Parent": "ControlModule1",
+ 			"Type": "GPSHat",
+ 			"Model": "Standard",
+ 			"Capability": "GPS",
+            "UseDefaultConfig": true,
+            "Ports": [{
+ 				"Name": "GPS0",
+                "Type":"GPS",
+                "Direction":"INPUT",
+ 				"Channels": [
+                    {
+ 						"ChannelName": "GPSData",
+ 						"Type": "GPS",
+ 						"Direction": "INPUT"
+ 					}]
+                }]
+            
+ 		},
+        "TerminalHat1": {
+ 			"Parent": "ControlModule2",
+ 			"Type": "TerminalHat",
+ 			"Model": "Standard",
+ 			"Capability": "GPIO",
+            "UseDefaultConfig": false,
+            "Ports": [{
+                "Name":"DigitalOutput",
+                "Type":"DIGITAL",
+                "Direction":"OUTPUT",
+                "Channels": [
+                    {
+                    "ChannelName": "ChannelA",
+ 						"Type": "DIGITAL",
+ 						"Direction": "OUTPUT",
+                        "PinNumber": 5,
+                        "DefaultValue": 0,
+ 					    "MinValue": 0,
+ 					    "MaxValue": 1
+                    }]
+                },{
+ 				"Name": "DigitalInput",
+                "Type":"DIGITAL",
+                "Direction":"INPUT",
+ 				"Channels": [
+                    {
+ 						"ChannelName": "PPS",
+ 						"Type": "DIGITAL",
+ 						"Direction": "INPUT",
+                        "PinNumber": 7,
+                        "DefaultValue": 0,
+ 					    "MinValue": 0,
+ 					    "MaxValue": 1
+ 					},
+                    {
+ 						"ChannelName": "ChannelB",
+ 						"Type": "DIGITAL",
+ 						"Direction": "INPUT",
+                        "PinNumber": 29,
+                        "DefaultValue": 0,
+ 					    "MinValue": 0,
+ 					    "MaxValue": 1
+ 					}]
+                }]
+            
+ 		},
+        "DisplayHat1": {
+ 			"Parent": "DevModule1",
+ 			"Type": "DisplayHat",
+ 			"Model": "PITFT_TOUCH",
+ 			"Capability": "Display",
+            "UseDefaultConfig": true           
+ 		}
+        
+ 	}
+ }
