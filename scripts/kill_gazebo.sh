@@ -1,0 +1,1 @@
+killall gzclient && killall gzserver
