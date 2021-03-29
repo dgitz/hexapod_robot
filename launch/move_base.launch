@@ -1,0 +1,19 @@
+<launch>
+
+ <!-- Run the map server --> 
+    <node name="map_server" pkg="map_server" type="map_server" args="/home/robot/Documents/US/799/map.yaml"/>
+ <!--- Run AMCL --> 
+ <!--
+    <include file="$(find amcl)/examples/amcl_omni.launch" />
+    -->
+   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+     <remap from="cmd_vel" to="/phantomx/cmd_vel"/>
+    <rosparam file="$(find hexapod_robot)/config/NavigationPlanning/costmap_common_params.yaml" command="load" ns="global_costmap" /> 
+    <rosparam file="$(find hexapod_robot)/config/NavigationPlanning/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find hexapod_robot)/config/NavigationPlanning/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find hexapod_robot)/config/NavigationPlanning/global_costmap_params.yaml" command="load" /> 
+    <rosparam file="$(find hexapod_robot)/config/NavigationPlanning/base_local_planner_params.yaml" command="load" />
+ </node>
+
+
+</launch> 
